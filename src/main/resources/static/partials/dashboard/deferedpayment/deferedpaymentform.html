@@ -1,0 +1,136 @@
+
+<div class="row" flex-column="16" flex-gutter="24" flex-container="row">
+
+    <div class="p+" flex-item="16">
+        <lx-tabs class=" bgc-grey-100" lx-theme="dark" lx-color="blue" lx-indicator="orange">
+            <lx-tab lx-icon="content-save" lx-label="{{'defered.tabs.tab1' | translate}}">
+                <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+        
+                    <div flex-item="16">
+                        <div class="card" >
+                            <div class="card__img card__img--top bgc-jd">
+                                <img ng-src="{{icon}}" width="100px" class="p+">
+                                <p class="fs-headline tc-white-1 display-block" > {{'defered.card1.headline' | translate}}</p>
+                            </div>
+                            <div flex-item="4">
+                                <div class="card">
+                                    <div class="toolbar">
+                                        <lx-search-filter>
+                                            <input type="text" name="mysearch" ng-model="search.mysearch"
+                                                   ng-model-options="{ debounce : 400 }" placeholder="{{'defered.datatable1.placeholder' | translate}}">
+                                        </lx-search-filter>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="data-table-container">
+                                <header class="data-table-header">
+                                <div class="data-table-header__label">
+                                    <span class="fs-title">{{'defered.datatable1.title' | translate}}</span>
+                                </div>
+                            </header>
+        
+                                <table class="data-table">
+                                    <thead>
+                                    <tr class="">
+                                        <th >{{'defered.datatable1.f1' | translate}}</th>
+                                        <th >{{'defered.datatable1.f2' | translate}}</th>
+                                        <th >{{'defered.datatable1.f3' | translate}}</th>
+                                        <th >{{'defered.datatable1.f4' | translate}}</th>
+                                        <!--<th  >Edit</th>-->
+                                        <th >{{'defered.datatable1.f5' | translate}}</th>
+                                        <th >{{'defered.datatable1.f6' | translate}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="defered in listPaymentsDefered | filter:search.mysearch | orderBy:'id' " class=" ">
+                                        <td >{{defered.principalname}}</td>
+                                        <td >{{defered.locationname}}</td>
+                                        <td >{{defered.dcreate | dateFromDB : "YYYY-MM-DD"}}</td>
+                                        <td >{{defered.dlanding | dateFromDB : "YYYY-MM-DD"}}</td>
+                                        <td >{{defered.serialcode}}</td>
+                                        <!--<td >
+                                            <lx-icon ng-click="openDialogprepareTicket(defered)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
+                                        </td>-->
+                                        <td >
+                                            <lx-icon ng-click="openDialogReverseTicket(defered)" lx-id="delete" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </lx-tab>
+
+            <lx-tab lx-icon="airplane" lx-label="{{'defered.tabs.tab2' | translate}}">
+
+                <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+
+                    <div flex-item="16">
+                        <div class="card" >
+                            <div class="card__img card__img--top bgc-jd">
+                                <img ng-src="{{icon}}" width="100px" class="p+">
+                                <p class="fs-headline tc-white-1 display-block" > {{'defered.card2.title' | translate}}</p>
+                            </div>
+                            <div flex-item="4">
+                                <div class="card">
+                                    <div class="toolbar">
+                                        <lx-search-filter>
+                                            <input type="text" name="mysearch" ng-model="search.mysearch"
+                                                   ng-model-options="{ debounce : 400 }" placeholder="{{'defered.datatable2.placeholder' | translate}}">
+                                        </lx-search-filter>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="data-table-container">
+                                <header class="data-table-header">
+                                    <div class="data-table-header__label">
+                                        <span class="fs-title">{{'defered.datatable2.title' | translate}}</span>
+                                    </div>
+                                </header>
+
+                                <table class="data-table">
+                                    <thead>
+                                    <tr class="">
+                                        <th >{{'defered.datatable2.f1' | translate}}</th>
+                                        <th >{{'defered.datatable2.f2' | translate}}</th>
+                                        <th >{{'defered.datatable2.f3' | translate}}</th>
+                                        <th >{{'defered.datatable2.f4' | translate}}</th>
+                                        <th >{{'defered.datatable1.f5' | translate}}</th>
+                                        <!--<th  >Edit</th>
+                                        <th  >Delete</th>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="closed in listPaymentsClosed | filter:search.mysearch | orderBy:'id' " class=" ">
+                                        <td >{{closed.principalname}}</td>
+                                        <td >{{closed.locationname}}</td>
+                                        <td >{{closed.dcreate | dateFromDB : "YYYY-MM-DD"}}</td>
+                                        <td >{{closed.dlanding | dateFromDB : "YYYY-MM-DD"}}</td>
+                                        <td >{{closed.serialcode}}</td>
+                                        <!--<td >
+                                            <lx-icon ng-click="openDialogprepareTicket(closed)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
+                                        </td>
+                                        <td >
+                                            <lx-icon ng-click="deleteClosedPay(defered)" lx-id="delete" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+                                        </td>-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </lx-tab>
+
+        </lx-tabs>
+    </div>
+
+</div>
+
+<section ng-include="'/partials/dashboard/deferedpayment/deferedDialog.html'"></section>

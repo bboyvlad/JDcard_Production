@@ -1,0 +1,85 @@
+<div class="row" ng-init="updateMenu()">
+    <form name="Loginform" >
+        <!--{{flogin}}-->
+        <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+            <div flex-item="4"></div>
+            <div flex-item="8">
+                <div class="card" >
+                    <div class="card__img card__img--top">
+                        <img ng-src="{{loginFormImg}}" width="100%">
+                        <img ng-src="{{loginFormImgCards}}" width="100%">
+                        <span class="fs-headline tc-white-1 display-block jd_headline" >
+                        {{'login.card1.headline' | translate}}
+</span>
+                    </div>
+                    <div class="p+"><!--{{progressBar}}-->
+
+                        <!--<strong class="fs-headline display-block">{{'login.card1.title' | translate}} J&amp;D Card</strong>-->
+                        <lx-progress lx-type="linear" lx-color="teal" ng-if="progressBar"></lx-progress>
+                        <p>{{'login.card1.subtitle' | translate}}</p> <a href="/users/sing-up">{{'login.card1.link' | translate}}</a>
+
+                        <div class="paragraph fs-body-1 mt+">
+                            <div class="p+ pt0">
+                                <div flex-container="row">
+                                    <div flex-item>
+                                        <lx-text-field lx-label="{{'login.form1.f1' | translate}}"
+                                           lx-valid="Loginform.username.$valid"
+                                           lx-error="Loginform.username.$invalid && Loginform.username.$touched">
+
+                                            <input type="email" name="username" ng-model="flogin.username"
+                                               ng-required="true" />
+                                        </lx-text-field>
+                                        <div ng-messages="Loginform.username.$error"
+                                             ng-if="Loginform.username.$touched"
+                                             style="color:maroon"
+                                             role="alert">
+                                            <div ng-message="required">{{'login.form1.f1error.e1' | translate}}</div>
+                                            <div ng-message="email">{{'login.form1.f1error.e2' | translate}}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div flex-container="row">
+                                    <div flex-item>
+                                        <lx-text-field lx-label="{{'login.form1.f2' | translate}}"
+                                                       lx-valid="Loginform.password.$valid"
+                                                       lx-error="Loginform.password.$invalid && Loginform.password.$touched">
+                                            <input type="password" name="password" ng-model="flogin.password"
+                                                   ng-required="true" />
+                                        </lx-text-field>
+                                        <div ng-messages="Loginform.password.$error"
+                                             ng-if="Loginform.password.$touched"
+                                             style="color:maroon"
+                                             role="alert">
+                                            <div ng-message="required">{{'login.form1.f2error.e1' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card__actions">
+                        <div class="">
+
+                            <div style="position: relative;">
+                                <lx-progress lx-type="linear" lx-color="teal"
+                                             ng-if="LinearProgress">
+                                </lx-progress>
+                            </div>
+                            <div class="" flex-container="row" flex-column="16" flex-gutter="24">
+                            <div flex-item="6"></div>
+                            <div flex-item="5">
+                                <lx-button lx-color="blue"
+                                           ng-click="userLogin($event, flogin)"
+                                           ng-disabled="sendbutton || Loginform.$invalid"
+                                >{{'login.form1.button' | translate}}</lx-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

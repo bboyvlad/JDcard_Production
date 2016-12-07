@@ -1,0 +1,159 @@
+<ul>
+    <li class="" ng-show="sharedMenu.mainmenu.main" ng-repeat="main in sharedMenu.mainmenu.main">
+        <a href="{{main.link}}">
+            <span class="menu_icon"><img ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" /></span>
+            <span class="menu_title">{{main.text | translate}}</span>
+        </a>
+    </li>
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.cardvalidate[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.cardvalidate"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.cardvalidate" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{cardvalidatemenu.link}}">{{cardvalidatemenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.payments[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.payments"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.payments" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{paymenu.link}}">{{paymenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.servrequest[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.servrequest"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.servrequest" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{servrequestmenu.link}}">{{servrequestmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.balance[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.balance"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.balance" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{balancemenu.link}}">{{balancemenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.jdcard[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.jdcard"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.jdcard" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{jdsubmenu.link}}">{{jdsubmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.giftcard[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.giftcard"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.giftcard" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{giftsubmenu.link}}">{{giftsubmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.defgen[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.defgen"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.defgen" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{defmenu.link}}">{{defmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.aircraft[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.aircraft"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.aircraft" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{aircraftmenu.link}}">{{aircraftmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.captain[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.captain"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.captain" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{captainmenu.link}}">{{captainmenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+
+    <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+        <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="material-icons ng-binding" ng-bind-html="section.icon"></i>
+                    </span>
+            <span class="menu_title ng-binding">{{sharedMenu.useradmin[0].tooltip | translate}}</span>
+        </a>
+        <ul ng-show="sharedMenu.useradmin"  class="ng-scope" >
+            <li ng-repeat="paymenu in sharedMenu.useradmin" class="ng-scope">
+                <a class="ng-binding ng-scope" ng-href="{{umenu.link}}">{{umenu.text | translate}}</a>
+            </li>
+        </ul>
+    </li>
+    <!--<lx-dropdown ng-show="sharedMenu.mainmenu.products" ng-repeat="product in sharedMenu.mainmenu.products">
+        <lx-dropdown-toggle>
+            <lx-button>{{product.text}}</lx-button>
+        </lx-dropdown-toggle>
+
+        <lx-dropdown-menu ng-show="product.submenu">
+            <ul>
+                <li ng-repeat="subp in product.submenu"><a class="dropdown-link">{{subp.text}}</a></li>
+            </ul>
+        </lx-dropdown-menu>
+    </lx-dropdown>-->
+
+</ul>

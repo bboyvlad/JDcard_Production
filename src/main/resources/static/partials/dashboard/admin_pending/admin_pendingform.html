@@ -1,0 +1,74 @@
+
+<div class="row" flex-column="16" flex-gutter="24" flex-container="row">
+
+    <div class="p+" flex-item="16">
+
+        <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+
+            <div flex-item="16">
+                <div class="card" >
+                    <div class="card__img card__img--top bgc-jd">
+                        <img ng-src="{{icon}}" width="100px" class="p+">
+                        <p class="fs-headline tc-white-1 display-block" > {{ 'adminPending.card1.headline' | translate}}</p>
+                    </div>
+                    <div flex-item="4">
+                        <div class="card">
+                            <div class="toolbar">
+                                <lx-search-filter>
+                                    <input type="text" name="mysearch" ng-model="search.mysearch"
+                                           ng-model-options="{ debounce : 400 }" placeholder="{{ 'adminPending.datatable1.placeholder' | translate}}">
+                                </lx-search-filter>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-table-container">
+                        <header class="data-table-header">
+                        <div class="data-table-header__label">
+                            <span class="fs-title">{{ 'adminPending.datatable1.title' | translate}}</span>
+                        </div>
+                    </header>
+
+                        <table class="data-table">
+                            <thead>
+                            <tr class="">
+                                <th width="13.5%">{{ 'adminPending.datatable1.f1' | translate}}</th>
+                                <th width="12.5%">{{ 'adminPending.datatable1.f2' | translate}}</th>
+                                <th width="7.5%">{{ 'adminPending.datatable1.f3' | translate}}</th>
+                                <th width="7.5%">{{ 'adminPending.datatable1.f4' | translate}}</th>
+                                <th width="11.5%">{{ 'adminPending.datatable1.f5' | translate}}</th>
+                                <th width="5.5%">{{ 'adminPending.datatable1.f6' | translate}}</th>
+                                <th width="5.5%">{{ 'adminPending.datatable1.f7' | translate}}</th>
+                                <th width="5.5%">{{ 'adminPending.datatable1.f8' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="defered in listPaymentsDefered | filter:search.mysearch | orderBy:'id' " class=" ">
+                                <td width="13.5%">{{defered.principalname}}</td>
+                                <td width="12.5%">{{defered.locationname}}</td>
+                                <td width="7.5%">{{defered.dcreate | dateFromDB : "YYYY-MM-DD"}}</td>
+                                <td width="7.5%">{{defered.dlanding | dateFromDB : "YYYY-MM-DD"}}</td>
+                                <td width="11.5%">{{defered.serialcode}}</td>
+                                <td width="5.5%">
+                                    <lx-icon ng-click="clearServiceRequest(defered)" lx-id="checkbox-marked-circle-outline" lx-size="m" lx-color="green" lx-type="circled"></lx-icon>
+                                </td>
+                                <td width="5.5%">
+                                    <lx-icon ng-click="openDialogprepareTicket(defered)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
+                                </td>
+                                <td width="5.5%">
+                                    <lx-icon ng-click="openDialogReverseTicket(defered)" lx-id="delete" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section ng-include="'/partials/dashboard/admin_pending/admin_pendingDialog.html'"></section>
+
+<section ng-include="'/partials/dashboard/admin_pending/admin_deferedDialog.html'"></section>

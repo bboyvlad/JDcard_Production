@@ -1,0 +1,179 @@
+<style>
+    @supports (-webkit-appearance:none) {
+        .jdhome_login_btn {
+            margin-top: 10px;
+        }
+        .jdhome_knowmore {
+            left: 33px !important;
+        }
+    }
+    @media only screen and (max-width: 1023px) {
+        .jdhome_login_btn {
+            margin-left: 25%;
+        }
+        .jdhome_knowmore {
+            top: 0px;
+            left: 0px !important;
+            position: relative !important;
+            display: initial;
+        }
+        .jdhome_imgcheck{
+            position: relative;
+            left: 0px !important;
+            display: initial !important;
+        }
+    }
+</style>
+<div class="" ng-init="updateMenu()">
+
+    <div class="" flex-container="row" flex-column="16" flex-gutter="24">
+        <div flex-item="3"></div>
+        <div flex-item="10">
+            <div class="card " >
+                <div class="card__img card__img--top" style="min-height: 95px;">
+                    <img ng-src="../css/img/design/index/bienvenidoBACK.png"  style="min-height: 95px;">
+                    <span class="fs-headline tc-white-1 display-block" style="text-align: center !important;">
+                        {{'index.card1.title1' | translate}}  {{'index.card1.title2' | translate}}   J&amp;D Card App
+                        <div flex-item="" flex-container="row">
+                                <div flex-item="8">
+                                </div>
+                                <div flex-item="3" style="" flex-container="row">
+                                    <div>
+                                    <img class="jdhome_imgcheck" ng-src="../css/img/design/index/checkmark1.png" />
+                                    <p class="fs-body-2 jdhome_knowmore" style="top: 1px; left: 0px !important;">
+                    {{'index.card1.subtitle' | translate}}
+                                    </p>
+
+                                    </div>
+                                    <!--<img ng-src="../css/img/design/conoce.png" />-->
+                                </div>
+                            </div>
+
+                    </span>
+                </div>
+                <div class=" tc-jdtext ">
+                    <div class="" flex-container="row" flex-column="16" flex-gutter="24">
+                        <div flex-item="3"> </div>
+                        <div flex-item="10" flex-container="column">
+                            <img ng-src="../css/img/design/index/mapa.png" />
+                            <div flex-item="" flex-container="row">
+
+                                <div flex-item="" class="jdhome">
+                                    <p class="fs-headline" style="top: 1px; margin-left: 20px; text-align: center; font-weight: bold !important;"> {{'index.card1.txt1' | translate}} <strong> J&amp;D Card </strong> <br/> {{'index.card1.txt2' | translate}}<!--<img ng-src="../css/img/design/titulo1.png" />-->
+                                    </p>
+                                </div>
+                            </div>
+                            <div flex-item="" flex-container="row" class="jdhome_login_btn">
+                                <div flex-item="5" >
+                                </div>
+                                <div flex-item="4" >
+                                    <a href="" ng-href="/loginpage">
+                                        <button class="jdhome_login_btn btn btn--m btn--raised bgc-jd tc-white-1" lx-ripple="indigo-500" style="position: relative; overflow: hidden;"> {{'index.card1.button' | translate}}
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div flex-item="" flex-container="row">
+
+                                <div flex-item="" >
+                                    <p class="fs-body-2" style="top: 1px; margin-left: 20px; text-align: center;">
+                                        {{'index.card1.txt3' | translate}},
+                                        <a href="" ng-href="/users/sing-up">
+                                            <strong>{{'index.card1.link' | translate}}</strong>
+                                        </a>
+                                    </p>
+                                </div>
+                                    <!--<img ng-src="../css/img/design/registrateHome.png" />-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="card__actions">
+                    <div class="p+">
+                        <a href="" ng-href="/loginpage">
+                            <button class="btn btn&#45;&#45;m btn&#45;&#45;raised bgc-jd tc-white-1" lx-ripple="indigo-500">{{'index.card1.button' | translate}}</button>
+                        </a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+
+        <!--<div flex-item="5">
+            <div class="card" >
+                <div class="p+">
+                    <strong class="fs-headline display-block">{{'index.card2.title' | translate}}</strong>
+
+                    <div class="paragraph fs-body-1 mt+">
+                        <p>
+                            {{'index.card2.text' | translate}} J&amp;D Card
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__actions">
+                    <div class="p+">
+                        <a href="" ng-href="/loginpage">
+                            <button class="btn btn&#45;&#45;m btn&#45;&#45;raised bgc-jd tc-white-1" lx-ripple="indigo-500">{{'index.card2.button' | translate}}</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+
+    </div>
+
+    <!--<div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+        <div flex-item="5">
+            <div class="card" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'">
+                <div class="p+">
+                    <strong class="fs-headline display-block">Validator</strong>
+
+                    <div class="paragraph fs-body-1 mt+">
+                        <p>
+                            Validate a J&amp;D Card
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__actions">
+                    <div class="p+">
+                        <a href="" ng-href="/dashboard/cardstatus">
+                            <button class="btn btn&#45;&#45;m btn&#45;&#45;raised bgc-jd tc-white-1" lx-ripple="indigo-500">Validate</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+
+        <div flex-item="5">
+            <div class="card" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'">
+                <div class="p+">
+                    <strong class="fs-headline display-block">Sing UP!</strong>
+
+                    <div class="paragraph fs-body-1 mt+">
+                        <p>
+                            Create your J&amp;D Account
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__actions">
+                    <div class="p+">
+                        <a href="" ng-href="/users/sing-up">
+                            <button class="btn btn&#45;&#45;m btn&#45;&#45;raised bgc-jd tc-white-1" lx-ripple="indigo-500">Sing Up</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>-->
+
+
+    <!--END-->
+</div>

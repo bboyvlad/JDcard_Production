@@ -1,0 +1,312 @@
+body {
+    font-family: 'Poppins', sans-serif !important;
+    font: 400 14px/1.42857 'Poppins',sans-serif !important;
+    min-width:400px !important;
+}
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+.subtlepattern {
+    background: rgba(0, 0, 0, 0.3) url("/css/img/backgrounds/gplaypattern.png") repeat scroll 0 0 !important
+}
+.tc-jdtext{
+    color: #2c3c8e !important;
+}
+
+.jd_headline{
+    text-align: center !important;
+    top: 16px !important;
+    font-weight: bold;
+}
+/*.card__img--top p{
+    bottom: 16px;
+    font-weight: bold;
+    left: 16px;
+    position: absolute;
+    right: 16px;
+}*/
+#sidebar_main .menu_section > ul > li > a > .menu_icon,
+#sidebar_main .menu_section > ul > li > a > .menu_icon img,
+#sidebar_main .menu_section > ul > li > ul > li > a > .menu_icon img{
+    width: 25px !important;
+    display: inline ;
+}
+
+#sidebar_main .menu_section > ul > li.active,
+#sidebar_main .menu_section > ul > li > ul > li.active{
+    background: #2C3A8F none repeat scroll 0 0 !important;
+}
+
+#sidebar_main .menu_section > ul > li.active > a,
+#sidebar_main .menu_section > ul > li > ul > li.active > a{
+    color: whitesmoke !important;
+}
+
+#sidebar_main .menu_section > ul > li > a:hover{
+    background: buttonface none repeat scroll 0 0 !important;
+}
+
+#sidebar_main .menu_section > ul > li > ul > li.active > a:hover{
+    background: whitesmoke none repeat scroll 0 0 !important;
+    color: #2c3c8e !important;
+}
+
+.menu_section{
+    height: 400px ! important; overflow: auto;
+}
+
+.card__img--top p{
+    bottom: 16px;
+    /*left: 16px;*/
+    position: absolute;
+    right: 16px;
+}
+
+.data-table td, .data-table th {
+    overflow-wrap: break-word;
+    padding-right: 4px !important;
+    white-space: normal !important;
+}
+/*****************************************/
+/*********** ANIMATIONS - START **********/
+/*****************************************/
+
+/* fade */
+
+@-webkit-keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0;  }
+}
+
+.view.ng-leave 	{ z-index:9999; }
+.view.ng-enter 	{ z-index:8888; }
+.ng-enter-prepare {
+    opacity: 0;
+}
+/* View 1 animations for page leave and enter */
+
+/******** DASHBOARD **********/
+.aircraft.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.aircraft.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.captain.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.captain.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.cardcheck.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.cardcheck.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.cart.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.cart.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.addgiftcard.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.addgiftcard.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.redeemgiftcard.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.redeemgiftcard.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.addjdcard.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.addjdcard.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.refilljdcard.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.refilljdcard.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.paymethod.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.paymethod.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.pilot.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.pilot.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+/******** DASHBOARD **********/
+
+/******** USERS **********/
+.manage.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.manage.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+
+.loginpage.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.loginpage.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.singup.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.singup.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+/******** USERS **********/
+
+.index.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.index.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.dashboard.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.dashboard.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.bankaccount.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.bankaccount.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.notifypay.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.notifypay.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+.balancedetails.ng-leave         {
+    -webkit-animation:fade .4s ease both;
+    -moz-animation:fade .4s ease both;
+    animation:fade .4s ease both;
+
+}
+.balancedetails.ng-enter 		{
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+}
+
+/*.divCartAnimation.ng-leave {
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+    overflow: hidden;
+}
+.divCartAnimation.ng-enter {
+    -webkit-animation:fade .5s ease both;
+    -moz-animation:fade .5s ease both;
+    animation:fade .5s ease both;
+    overflow: hidden;
+}*/
+/***************************************/
+/*********** ANIMATIONS - END **********/
+/***************************************/

@@ -1,0 +1,284 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <base href="/" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=no" />
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!-- load custom font -->
+    <!--<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" />-->
+    <!-- custom font css -->
+    <!-- load MUI -->
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css" media="all" />
+    <!-- uikit -->
+    <link rel="stylesheet" th:href="@{/theme/assets/uikit/css/uikit.almost-flat.css}" href="../static/theme/assets/uikit/css/uikit.almost-flat.css" media="all" />
+
+    <!-- flag icons -->
+    <link rel="stylesheet" th:href="@{/theme/assets/icons/flags/flags.css}" href="../static/theme/assets/icons/flags/flags.css" media="all" />
+
+    <!-- altair admin -->
+    <link rel="stylesheet" th:href="@{/theme/assets/css/main.css}" href="../static/theme/assets/css/main.css" media="all" />
+
+
+    <link rel="stylesheet" th:href="@{/css/lumx/dist/lumx.css}" href="../static/css/lumx/dist/lumx.css" />
+    <link rel="stylesheet" th:href="@{/css/tdcstyle.css}" href="../static/css/tdcstyle.css" />
+    <link rel="stylesheet" th:href="@{/css/angular-material/angular-material.min.css}" href="../static/css/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" th:href="@{/css/timepicker/angular-material-timepicker.css}" href="../static/css/timepicker/angular-material-timepicker.css" />
+
+
+
+</head>
+<body ng-app="jdApp" ng-cloak="" class="sidebar_main_open sidebar_main_swipe"  style="overflow: visible; min-height: 700px;">
+
+<!-- main header -->
+<header id="header_main" class="bgc-jd" ng-controller="MyJdMenuController" >
+    <div class="header_main_content">
+
+        <!-- MENU -->
+        <nav class="uk-navbar" >
+            <!-- main sidebar switch -->
+            <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                <span class="sSwitchIcon"></span>
+            </a>
+            <!-- secondary sidebar switch -->
+            <a href="#" id="sidebar_secondary_toggle" class="sSwitch sSwitch_right sidebar_secondary_check">
+                <lx-icon style="position: relative; top: -22px; right: 15px;" lx-id="cart-outline" lx-size="l" lx-color="grey" lx-type="circled"></lx-icon>
+            </a>
+
+            <section ng-include="'/partials/menu/menu.html'"></section>
+
+        </nav>
+        <!-- MENU -->
+
+    </div>
+    <div class="header_main_search_form">
+        <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+        <form class="uk-form">
+            <input type="text" class="header_main_search_input" />
+            <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+        </form>
+    </div>
+
+    <!-- main sidebar -->
+    <aside id="sidebar_main" style="">
+
+        <div class="sidebar_main_header">
+            <div class="sidebar_logo">
+                <a href="/" class="sSidebar_hide"><img th:src="@{/theme/assets/img/logo_main.png}" src="../static/theme/assets/img/logo_main.png" alt="" style="height: 75px;"/></a>
+                {{sharedMenu.mainmenu.main.text}}
+            </div>
+            <!--<div class="sidebar_actions">
+                <select id="lang_switcher" name="lang_switcher">
+                    <option value="gb" selected="">English</option>
+                </select>
+            </div>-->
+        </div>
+
+        <div class="menu_section">
+            <ul>
+                <li class="" ng-show="sharedMenu.mainmenu.main" ng-repeat="main in sharedMenu.mainmenu.main">
+                    <a href="{{main.link}}">
+                        <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
+                        <span class="menu_title">{{main.text}}</span>
+                    </a>
+                </li>
+
+                <!--<lx-dropdown ng-show="sharedMenu.mainmenu.products" ng-repeat="product in sharedMenu.mainmenu.products">
+                    <lx-dropdown-toggle>
+                        <lx-button>{{product.text}}</lx-button>
+                    </lx-dropdown-toggle>
+
+                    <lx-dropdown-menu ng-show="product.submenu">
+                        <ul>
+                            <li ng-repeat="subp in product.submenu"><a class="dropdown-link">{{subp.text}}</a></li>
+                        </ul>
+                    </lx-dropdown-menu>
+                </lx-dropdown>-->
+
+            </ul>
+        </div>
+    </aside><!-- main sidebar end -->
+
+    <!-- secondary sidebar -->
+    <aside id="sidebar_secondary" class="tabbed_sidebar" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'">
+        <!--{{vm.search}}-->
+        <div flex-item="">
+            <!--<div class="card bgc-indigo-500">
+                <div class="toolbar">
+                    <div class="toolbar__right">
+                        <lx-search-filter lx-color="white" lx-closed="false">
+                            <input type="text" ng-model="vm.search" ng-model-options="{ debounce: 400 }" placeholder="Search" />
+                        </lx-search-filter>
+                    </div>
+                </div>
+            </div>-->
+            <ul class="list mt++">
+                <p class="p+ fs-title display-block">Shopping Cart
+                    <a href="/dashboard/cart">
+                        <lx-button lx-type="fab"><i class="mdi mdi-plus"></i></lx-button>
+                    </a>
+                </p>
+                <div class="p+" ng-if="!cart">
+                    <lx-icon lx-id="cart-outline" lx-size="s" lx-color="grey" lx-type="flat"></lx-icon>
+                    <p class="fs-subhead display-block">
+                        Your shop cart is empty!!!
+                    </p>
+
+                </div>
+                <!--<li class="list-row list-row&#45;&#45;has-separator" >
+                    <div class="list-row__primary">
+                        <lx-icon lx-id="airplane-landing" lx-size="s" lx-color="grey" lx-type="flat"></lx-icon>
+                    </div>
+                    <div class="list-row__content">
+                        <span>item / $ 00.000</span>
+                    </div>
+
+                    <div class="list-row__secondary">
+                        <lx-icon ng-click="" lx-id="delete-forever" lx-size="xs" lx-color="grey" lx-type="flat"></lx-icon>
+                    </div>
+                </li>-->
+                <li class="list-row list-row--has-separator" ng-repeat="item in cart | orderBy:'id'">
+                    <div class="list-row__primary">
+                        <lx-icon lx-id="airplane" lx-size="s" lx-color="grey" lx-type="flat" ng-click="shopCartDialog(item)"></lx-icon>
+                    </div>
+                    <div class="list-row__content">
+                        <span ng-click="shopCartDialog(item)">{{item.name}}</span>
+                        <lx-button lx-color="blue" lx-size="xs" lx-type="raised" ng-click="checkoutDialog(item)">Generar</lx-button>
+                    </div>
+
+                    <div class="list-row__secondary">
+                        <lx-icon ng-click="deleteShopCart(item)" lx-id="delete-forever" lx-size="xs" lx-color="red" lx-type="flat"></lx-icon>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div ng-include="'/partials/dashboard/cart/shopcartdialog.html'"></div>
+        <div ng-include="'/partials/dashboard/cart/checkoutdialog.html'"></div>
+        <!--<ul class="uk-tab uk-tab-icons uk-tab-grid" data-uk-tab="{connect:'#dashboard_sidebar_tabs', animation:'slide-horizontal'}">
+            <li class="uk-active uk-width-1-3"><a href="#"><i class="material-icons">&#xE422;</i></a></li>
+            <li class="uk-width-1-3 chat_sidebar_tab"><a href="#"><i class="material-icons">&#xE0B7;</i></a></li>
+            <li class="uk-width-1-3"><a href="#"><i class="material-icons">&#xE8B9;</i></a></li>
+        </ul>
+
+        <div class="scrollbar-inner">
+            <ul id="dashboard_sidebar_tabs" class="uk-switcher">
+
+            </ul>
+        </div>
+
+        <button type="button" class="chat_sidebar_close uk-close"></button>
+        <div class="chat_submit_box">
+            <div class="uk-input-group">
+                <input type="text" class="md-input" name="submit_message" id="submit_message" placeholder="Send message" />
+                <span class="uk-input-group-addon">
+                            <a href="#"><i class="material-icons md-24">&#xE163;</i></a>
+                        </span>
+            </div>
+        </div>-->
+
+    </aside><!-- secondary sidebar end -->
+
+
+</header><!-- main header end -->
+
+<div id="page_content" class="subtlepattern">
+    <div id="page_content_inner" class="" >
+        <div class="view {{ cssClass }}" ng-view=""></div>
+
+    </div>
+
+    <footer>
+        <div class="tc-white-1 p+" flex-container="row" flex-column="16" flex-gutter="24">
+            <div flex-item="16">
+                Inc. <a href="htts://www.jdoilfield.com">JD Oilfield s.a.</a>
+            </div>
+        </div>
+    </footer>
+    <!-- example content -->
+</div>
+
+<!--JS LIBS-->
+<script th:src="@{/js/jquery.min.js}" src="../static/js/jquery.min.js"></script>
+<script th:src="@{/js/moment-with-locales.js}" src="../static/js/moment-with-locales.js"></script>
+<script th:src="@{/js/velocity.min.js}" src="../static/js/velocity.min.js"></script>
+<script th:src="@{/js/angular.js}" src="../static/js/angular.js"></script>
+<script th:src="@{/js/angular-route.js}" src="../static/js/angular-route.js"></script>
+<script th:src="@{/js/angular-resource.js}" src="../static/js/angular-resource.js"></script>
+<script th:src="@{/js/angular-messages.js}" src="../static/js/angular-messages.js"></script>
+<script th:src="@{/js/angular-animate.js}" src="../static/js/angular-animate.js"></script>
+<script th:src="@{/js/angular-cookies.js}" src="../static/js/angular-cookies.js"></script>
+<script th:src="@{/js/angular-sanitize.min.js}" src="../static/js/angular-sanitize.min.js"></script>
+<script th:src="@{/js/angular-translate.min.js}" src="../static/js/angular-translate.min.js"></script>
+<script th:src="@{/js/angular-translate-storage-cookie.min.js}" src="../static/js/angular-translate-storage-cookie.min.js"></script>
+<script th:src="@{/js/angular-translate-storage-local.min.js}" src="../static/js/angular-translate-storage-local.min.js"></script>
+<script th:src="@{/css/lumx/dist/lumx.js}" src="../static/css/lumx/dist/lumx.js"></script>
+<script th:src="@{/js/angular-input-masks-standalone.js}" src="../static/js/angular-input-masks-standalone.js"></script>
+<script th:src="@{/js/angular-payments.js}" src="../static/js/angular-payments.js"></script>
+<script th:src="@{/css/angular-material/angular-material.min.js}" src="../static/css/angular-material/angular-material.min.js"></script>
+<script th:src="@{/css/angular-material/angular-aria.min.js}" src="../static/css/angular-material/angular-aria.min.js"></script>
+<script th:src="@{/css/timepicker/angular-material-timepicker.js}" src="../static/css/timepicker/angular-material-timepicker.js"></script>
+<script th:src="@{/js/Chart.bundle.min.js}" src="../static/js/Chart.bundle.min.js"></script>
+<script th:src="@{/js/angular-chart.min.js}" src="../static/js/angular-chart.min.js"></script>
+<script th:src="@{/js/angular-translate.min.js}" src="../static/js/angular-translate.min.js"></script>
+
+
+<!-- THEMES JS -->
+<!-- common functions -->
+<script th:src="@{/theme/assets/js/common.js}" src="../static/theme/assets/js/common.js"></script>
+<!-- uikit functions -->
+<script th:src="@{/theme/assets/js/uikit_custom.js}" src="../static/theme/assets/js/uikit_custom.js"></script>
+<!-- altair common functions/helpers -->
+<script th:src="@{/theme/assets/js/altair_admin_common.js}" src="../static/theme/assets/js/altair_admin_common.js"></script>
+
+<!-- page specific plugins -->
+
+<!--  dashbord functions
+<script src="../static/theme/assets/js/pages/dashboard.js"></script>-->
+
+<script>
+    $(function() {
+        // enable hires images
+        altair_helpers.retina_images();
+        // fastClick (touch devices)
+        if(Modernizr.touch) {
+            FastClick.attach(document.body);
+        }
+    });
+</script>
+
+
+<!--JS APP-->
+<script th:src="@{/app/jdapp.module.js}" src="../static/app/jdapp.module.js"></script>
+<script th:src="@{/app/jdapp.config.js}" src="../static/app/jdapp.config.js"></script>
+<script th:src="@{/app/jdapp.lang_config.js}" src="../static/app/jdapp.lang_config.js"></script>
+<script th:src="@{/app/menu/menu.module.js}" src="../static/app/menu/menu.module.js"></script>
+<script th:src="@{/app/users/singup.module.js}" src="../static/app/users/singup.module.js"></script>
+<script th:src="@{/app/users/smsemail.module.js}" src="../static/app/users/smsemail.module.js"></script>
+<script th:src="@{/app/users/login.module.js}" src="../static/app/users/login.module.js"></script>
+<script th:src="@{/app/users/accountstatus.module.js}" src="../static/app/users/accountstatus.module.js"></script>
+<script th:src="@{/app/users/manage/admin_users.module.js}" src="../static/app/users/manage/admin_users.module.js"></script>
+<script th:src="@{/app/dashboard/main.module.js}" src="../static/app/dashboard/main.module.js"></script>
+<script th:src="@{/app/dashboard/paymethod/paymethodform.module.js}" src="../static/app/dashboard/paymethod/paymethodform.module.js"></script>
+<script th:src="@{/app/dashboard/jdcard/addjdcardform.module.js}" src="../static/app/dashboard/jdcard/addjdcardform.module.js"></script>
+<script th:src="@{/app/dashboard/jdcard/refilljdcardform.module.js}" src="../static/app/dashboard/jdcard/refilljdcardform.module.js"></script>
+<script th:src="@{/app/generaldef/groupserv/addgrpservform.module.js}" src="../static/app/generaldef/groupserv/addgrpservform.module.js"></script>
+<script th:src="@{/app/generaldef/product/addproductform.module.js}" src="../static/app/generaldef/product/addproductform.module.js"></script>
+<script th:src="@{/app/dashboard/cart/cart.module.js}" src="../static/app/dashboard/cart/cart.module.js"></script>
+<script th:src="@{/app/dashboard/giftcard/addgiftjdcardform.module.js}" src="../static/app/dashboard/giftcard/addgiftjdcardform.module.js"></script>
+<script th:src="@{/app/dashboard/giftcard/redeemgiftjdcardform.module.js}" src="../static/app/dashboard/giftcard/redeemgiftjdcardform.module.js"></script>
+<script th:src="@{/app/dashboard/aircraft/myaircrafts.module.js}" src="../static/app/dashboard/aircraft/myaircrafts.module.js"></script>
+<script th:src="@{/app/dashboard/captain/captain.module.js}" src="../static/app/dashboard/captain/captain.module.js"></script>
+<script th:src="@{/app/dashboard/cardcheck/cardcheck.module.js}" src="../static/app/dashboard/cardcheck/cardcheck.module.js"></script>
+<script th:src="@{/app/dashboard/bankmanage/bankaccount.module.js}" src="../static/app/dashboard/bankmanage/bankaccount.module.js"></script>
+<script th:src="@{/app/dashboard/notifypayment/notifypayment.module.js}" src="../static/app/dashboard/notifypayment/notifypayment.module.js"></script>
+<script th:src="@{/app/dashboard/checkpayment/checkpayment.module.js}" src="../static/app/dashboard/checkpayment/checkpayment.module.js"></script>
+<script th:src="@{/app/dashboard/balance/balance.module.js}" src="../static/app/dashboard/balance/balance.module.js"></script>
+<script th:src="@{/app/dashboard/deferedpayment/deferedpayment.module.js}" src="../static/app/dashboard/deferedpayment/deferedpayment.module.js"></script>
+<script th:src="@{/app/dashboard/admin_pending/admin_pending.module.js}" src="../static/app/dashboard/admin_pending/admin_pending.module.js"></script>
+
+</body>
+</html>
+

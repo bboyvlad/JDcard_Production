@@ -1,0 +1,275 @@
+<div class="uk-navbar-flip">
+    <ul class="uk-navbar-nav user_actions">
+        <li>
+            <a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large">
+                <i class="material-icons md-24 md-light" lx-ripple="true" lx-tooltip="Full Screen" lx-tooltip-position="bottom">&#xE5D0;</i>
+            </a>
+        </li>
+
+        <lx-dropdown style="position: relative; top: 5px;" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="Language" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-translate"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+            <lx-dropdown-menu>
+                <ul>
+                    <li >
+                        <a class="dropdown-link" ng-click="changeLanguage('en')">
+                            <img src='../css/img/flags/United States.png' alt="" style="visibility: visible; float: left;" width="25px" /> {{ 'BUTTON_LANG_EN' | translate}}
+                        </a>
+                    </li>
+                    <li >
+                        <a class="dropdown-link" ng-click="changeLanguage('es')">
+                            <img src='../css/img/flags/Spain.png' alt="" style="visibility: visible; float: left;" width="25px" /> {{ 'BUTTON_LANG_ES' | translate}}
+                        </a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <a style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'" ng-href="/dashboard">
+            <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="Dashboard" lx-tooltip-position="bottom" >
+                <i class="mdi mdi-view-dashboard"></i>
+            </lx-button>
+        </a>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.cardvalidate[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-credit-card-scan"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.cardvalidate" ng-repeat="cardvalidatemenu in sharedMenu.cardvalidate">
+                        <a class="dropdown-link" ng-href="{{cardvalidatemenu.link}}">{{cardvalidatemenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.payments[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-bank"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-if="user.authorities[0].authority=='ROLE_USER' || user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" ng-show="sharedMenu.payments" ng-repeat="paymenu in sharedMenu.payments">
+                        <a class="dropdown-link" ng-href="{{paymenu.link}}">{{paymenu.text | translate}}</a>
+                    </li>
+                    <li ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" ng-show="sharedMenu.bankmanage" ng-repeat="bankmenu in sharedMenu.bankmanage">
+                        <a class="dropdown-link" ng-href="{{bankmenu.link}}">{{bankmenu.text | translate}}</a>
+                    </li>
+
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.servrequest[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-airplane-takeoff"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.servrequest" ng-repeat="servrequestmenu in sharedMenu.servrequest">
+                        <a class="dropdown-link" ng-href="{{servrequestmenu.link}}">{{servrequestmenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.balance[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-chart-areaspline"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.balance" ng-repeat="balancemenu in sharedMenu.balance">
+                        <a class="dropdown-link" ng-href="{{balancemenu.link}}">{{balancemenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.jdcard[0].tooltip | translate}} J&amp;D Card" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-credit-card-multiple"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.jdcard" ng-repeat="jdsubmenu in sharedMenu.jdcard">
+                        <a class="dropdown-link" ng-href="{{jdsubmenu.link}}">{{jdsubmenu.text | translate}}  J&D Card</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.giftcard[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-wallet-giftcard"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.giftcard" ng-repeat="giftsubmenu in sharedMenu.giftcard">
+                        <a class="dropdown-link" ng-href="{{giftsubmenu.link}}">{{giftsubmenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.defgen[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-settings-box"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.defgen" ng-repeat="defmenu in sharedMenu.defgen">
+                        <a class="dropdown-link" ng-href="{{defmenu.link}}">{{defmenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.aircraft[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-airplane"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.aircraft" ng-repeat="aircraftmenu in sharedMenu.aircraft">
+                        <a class="dropdown-link" ng-href="{{aircraftmenu.link}}">{{aircraftmenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.captain[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-account-star"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.captain" ng-repeat="captainmenu in sharedMenu.captain">
+                        <a class="dropdown-link" ng-href="{{captainmenu.link}}">{{captainmenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.useradmin[0].tooltip | translate}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-account-settings-variant"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+                    <li ng-show="sharedMenu.useradmin" ng-repeat="umenu in sharedMenu.useradmin">
+                        <a class="dropdown-link" ng-href="{{umenu.link}}">{{umenu.text | translate}}</a>
+                    </li>
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+
+        <lx-dropdown style="position: relative; top: 5px;" ng-show="sharedMenu.usermenu" lx-position="right" lx-over-toggle="true" lx-width="250">
+            <lx-dropdown-toggle>
+                <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{ user.name || 'User'}}" lx-tooltip-position="bottom" >
+                    <i class="mdi mdi-account-box"></i>
+                </lx-button>
+            </lx-dropdown-toggle>
+
+            <lx-dropdown-menu>
+                <ul>
+
+                    <!--<li ng-show="!user.principal">
+                        <a class="dropdown-link ng-binding"
+                           ng-href="/users/sing-up" >Registrate</a>
+                    </li>-->
+                    <li ng-show="!user.principal">
+                        <a class="dropdown-link ng-binding"
+                           ng-href="/loginpage" >{{'menu.usermenu.opt2' | translate}}</a>
+                    </li>
+                    <li ng-show="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'">
+                        <a href="" class="dropdown-link" ng-click="newCoordinates()">
+                            New coordinate</a>
+                    </li>
+                    <li ng-show="user.principal">
+                        <a href="" class="dropdown-link" ng-click="logout()">
+                            Logout</a>
+                    </li>
+
+                </ul>
+            </lx-dropdown-menu>
+        </lx-dropdown>
+        <!--<li><a href="#" id="main_search_btn" class="user_action_icon"><i class="material-icons md-24 md-light">&#xE8B6;</i></a></li>-->
+        <!--<li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+            <a href="#" class="user_action_image">Gestione sus Metodos de Pago</a>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav js-uk-prevent">
+                    <li ng-show="sharedMenu.payments" ng-repeat="paymenu in sharedMenu.payments">
+                        <a ng-href="{{paymenu.link}}">{{paymenu.text}}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+            <a href="#" class="user_action_image">Gestione su J&amp;D Card</a>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav js-uk-prevent">
+                    <li ng-show="sharedMenu.jdcard" ng-repeat="jdsubmenu in sharedMenu.jdcard">
+                        <a ng-href="{{jdsubmenu.link}}">{{jdsubmenu.text}}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+            <a href="#" class="user_action_image">Definiciones Generales</a>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav js-uk-prevent">
+                    <li ng-show="sharedMenu.defgen" ng-repeat="defmenu in sharedMenu.defgen">
+                        <a ng-href="{{defmenu.link}}">{{defmenu.text}}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+            <a href="#" class="user_action_image"><img class="md-user-image" th:src="@{/theme/assets/img/avatars/avatar_11_tn.png}" src="../static/theme/assets/img/avatars/avatar_11_tn.png" alt="" style="top: 5px; position: relative;"/></a>
+            <div class="uk-dropdown uk-dropdown-small">
+                <ul class="uk-nav js-uk-prevent">
+                    <li ng-show="sharedMenu.usermenu" ng-repeat="umenu in sharedMenu.usermenu">
+                        <a ng-href="{{umenu.link}}">{{umenu.text}}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>-->
+    </ul>
+</div>

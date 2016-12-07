@@ -1,0 +1,141 @@
+<!-- EDIT DIALOG -->
+
+<lx-dialog id="{{ dialogprepareTicket }}" lx-size="l">
+    <lx-dialog-header>
+        <div class="toolbar bgc-primary pl++">
+            <span class="toolbar__label tc-white fs-title">
+                {{ 'adminPending.dialog.headline' | translate}}
+            </span>
+        </div>
+    </lx-dialog-header>
+
+    <lx-dialog-content>
+
+        <!-- EDIT FORM -->
+        <div class="row" >
+            <form name="PrepareTicket" novalidate>
+                <!--1{{fuser}} 2{{master}}-->
+                <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+                    <!--<div flex-item="2"></div>-->
+                    <div flex-item="16">
+                        <div class="card" >
+                            <div class="p+">
+
+                                <div flex-container="row">
+                                    <div flex-item="6">
+                                        <span class="fs-subhead">{{ 'adminPending.dialog.label1' | translate}}:</span>
+                                        <span class="fs-subhead display-block">{{ ticket.principalname }}</span>
+                                    </div>
+                                    <div flex-item="6">
+                                        <span class="fs-subhead">{{ 'adminPending.dialog.label2' | translate}}:</span>
+                                        <span class="fs-subhead display-block">{{ ticket.locationname }}</span>
+                                    </div>
+                                </div>
+                                <div flex-container="row">
+                                    <div flex-item="6">
+                                        <span class="fs-subhead">{{ 'adminPending.dialog.label3' | translate}}:</span>
+                                        <span class="fs-subhead display-block">{{ ticket.dlanding | dateFromDB: "YYYY-MM-DD" }}</span>
+                                    </div>
+                                    <div flex-item="6">
+                                        <lx-text-field lx-label="{{ 'adminPending.form1.f1' | translate}}"
+                                                       lx-valid="PrepareTicket.ticket.$valid"
+                                                       lx-error="PrepareTicket.ticket.$invalid && PrepareTicket.ticket.$touched">
+                                            <input type="text" name="ticket" ng-model="pending.ticketNumber"
+                                                   ng-required="true">
+                                        </lx-text-field>
+                                        <div ng-messages="PrepareTicket.ticket.$error"
+                                             ng-if="PrepareTicket.ticket.$touched"
+                                             style="color:maroon"
+                                             role="alert">
+                                            <div ng-message="required">{{ 'adminPending.form1.f1error.e1' | translate}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+<!--{{checkService}}-->
+                            <div class="data-table-container bgc-blue-grey-100 p+ ">
+                                <header class="data-table-header">
+                                    <div class="data-table-header__label">
+                                        <span class="fs-subhead">{{ 'adminPending.dialog.datatable1.title' | translate}}</span>
+                                    </div>
+                                </header>
+
+                                <table class="data-table fs-body-1">
+                                    <thead>
+                                    <tr class="">
+                                        <th> {{ 'adminPending.dialog.datatable1.f1' | translate}} </th>
+                                        <th> {{ 'adminPending.dialog.datatable1.f2' | translate}} </th>
+                                        <th> {{ 'adminPending.dialog.datatable1.f3' | translate}} </th>
+                                        <th> {{ 'adminPending.dialog.datatable1.f4' | translate}} </th>
+                                        <th> {{ 'adminPending.dialog.datatable1.f5' | translate}} </th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody ng-repeat="service in ticket.items | orderBy:'id'" class="fs-body-1 ">
+                                    <tr>
+                                        <td>
+                                            <lx-checkbox
+                                                    ng-model="service.checked"
+                                                    ng-change="sync(service.checked, service, false)"
+                                            ></lx-checkbox>
+                                        </td>
+                                        <td> {{service.pricename}} </td>
+                                        <td> {{service.pricedesc}} </td>
+                                        <td> {{service.unitprice | currency:"USD$" }} </td>
+                                        <!--</tr>
+                                        <tr ng-show="bool">-->
+                                        <td ng-show="service.checked">
+                                            <div flex-container="row" flex-column="16" flex-gutter="">
+                                                <div flex-item="16">
+                                                    <lx-text-field lx-label="{{ 'adminPending.form1.f2' | translate}}"
+                                                                   lx-valid="PrepareTicket.amount.$valid"
+                                                                   lx-error="PrepareTicket.amount.$invalid && PrepareTicket.amount.$touched">
+                                                        <input type="number" name="amount" ng-model="itemQuantity" ng-value="service.quantity"
+                                                               ng-change="sync(false, service, itemQuantity)"
+                                                        >
+                                                    </lx-text-field>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--<td >
+                                        <lx-icon ng-click="openDialogCaptain(service)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
+                                    </td>
+                                    <td >
+                                        <lx-icon ng-click="deleteCaptain(service)" lx-id="delete" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+                                    </td>-->
+                                    </tbody>
+                                    <tfoot>
+                                    <td colspan="4"></td>
+                                    <td>
+                                                <span class="fs-subhead">
+                                                    Total: {{servicesTotal | currency:"USD$"}}
+                                                </span>
+                                    </td>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </lx-dialog-content>
+
+    <lx-dialog-footer>
+        <div style="position: relative;">
+            <lx-progress lx-type="linear" lx-color="teal"
+                         ng-if="LinearProgress">
+            </lx-progress>
+        </div>
+        <lx-button lx-color="black" lx-type="flat" ng-click="reset()" lx-dialog-close>{{ 'adminPending.form1.button1' | translate}}</lx-button>
+        <lx-button lx-color="green"
+                   ng-click="prepareTicket($event, ticket)"
+                   ng-disabled="sendbutton || PrepareTicket.$invalid"
+        >{{ 'adminPending.form1.button2' | translate}}</lx-button>
+    </lx-dialog-footer>
+</lx-dialog>

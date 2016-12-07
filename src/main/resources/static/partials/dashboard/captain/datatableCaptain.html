@@ -1,0 +1,49 @@
+<div flex-item="4">
+    <div class="card">
+        <div class="toolbar">
+            <lx-search-filter>
+                <input type="text" name="mysearch" ng-model="search.mysearch"
+                       ng-model-options="{ debounce : 400 }" placeholder="{{ 'captain.datatable.placeholder' | translate}}">
+            </lx-search-filter>
+        </div>
+    </div>
+</div>
+
+<div class="data-table-container">
+    <!--<header class="data-table-header">
+        <div class="data-table-header__label">
+            <span class="fs-title">Capitanes</span>
+        </div>
+    </header>-->
+
+    <table class="data-table">
+        <thead>
+        <tr class="">
+            <th> {{ 'captain.datatable.f1' | translate}} </th>
+            <th> {{ 'captain.datatable.f2' | translate}} </th>
+            <th> {{ 'captain.datatable.f3' | translate}} </th>
+            <th> {{ 'captain.datatable.f4' | translate}} </th>
+            <th> {{ 'captain.datatable.f5' | translate}} </th>
+            <th> {{ 'captain.datatable.f6' | translate}} </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="captain in listCaptain | filter:search.mysearch | limitTo: 5 | orderBy: 'id'" class=" ">
+            <td> {{captain.name}} </td>
+            <td> {{captain.email}} </td>
+            <td> {{captain.license}} </td>
+            <td> {{captain.phone}} </td>
+            <td >
+                <lx-icon ng-click="openDialogCaptain(captain)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
+            </td>
+            <td >
+                <lx-icon ng-click="deleteCaptain(captain)" lx-id="delete" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+            <td coldspan="5"></td>
+            <td>total: {{listCaptain.length}}</td>
+        </tfoot>
+    </table>
+</div>

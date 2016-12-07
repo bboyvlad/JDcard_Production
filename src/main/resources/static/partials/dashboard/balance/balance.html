@@ -1,0 +1,231 @@
+<style>
+    .listAnimation {
+        transition: all linear 0.5s;
+    }
+    .listAnimation.ng-hide-animate {
+        opacity: 0;
+    }
+</style>
+<div class="row" ng-init="reset()">
+    <lx-tabs class=" bgc-grey-100" lx-theme="dark" lx-color="blue" lx-indicator="orange">
+        <lx-tab lx-icon="content-save" lx-label="J&amp;D Card {{ 'balance.tabs.tab1' | translate}}">
+
+            <div class="card p+">
+                <div class="card__img card__img--top bgc-jd">
+                    <img ng-src="{{icon}}" width="100px" class="p+">
+                    <p class="fs-headline tc-white-1 display-block" >J&amp;D Cards {{ 'balance.card1.headline' | translate}} </p>
+                </div>
+                <div class="p+">
+
+                    <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+                        <div class="p+" flex-item="8">
+                            <strong class="fs-headline display-block">J&amp;D Cards {{ 'balance.card1.headline' | translate}}</strong>
+
+                            <div class="paragraph fs-body-1 mt+">
+                                <p class="fs-body-2 " >{{ 'balance.card1.label1' | translate}}</p>
+                                <p class="fs-headline tc-green-500 " >{{ totalJdCardBalance.payavailable | currency:"USD$" }}</p>
+                            </div>
+                            <div class="paragraph fs-body-1 mt+" ng-show="totalJdCardBalance.paylocked!=0">
+                                <p class="fs-body-2 " >{{ 'balance.card1.label2' | translate}}</p>
+                                <p class="fs-headline tc-red-500 " >{{ totalJdCardBalance.paylocked | currency:"USD$" }}</p>
+                            </div>
+
+                        </div>
+                        <div class="p+" flex-item="4" ng-show="mainPieChart.show">
+                            <canvas id="pie" class="chart chart-pie"
+                                    chart-data="mainPieChart.data" chart-labels="mainPieChart.labels" chart-options="mainPieChart.options">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--lineData: {{mainLineChart.lineData}}-->
+        </lx-tab>
+        <lx-tab lx-icon="airplane" lx-label="J&amp;D Card {{ 'balance.tabs.tab2' | translate}}">
+            <form name="BalanceForm" novalidate>
+                <!--user id: {{user.id}}
+                {{balance}}-->
+                <!--{{jdcardOpts}}-->
+                <div class="p+" flex-container="row" flex-column="16" flex-gutter="24">
+                    <div flex-item="16">
+
+                        <div class="card">
+                            <div class="card__img card__img--top bgc-jd">
+                                <img ng-src="{{icon}}" width="100px" class="p+">
+                                <p class="fs-headline tc-white-1 display-block" >J&amp;D Cards {{ 'balance.card2.headline' | translate}} </p>
+                            </div>
+                            <div class="p+">
+                                <!--<strong class="fs-headline display-block">Choose a J&amp;D Card</strong>-->
+                                <!--1{{paymethod}} 2{{paymethod}}-->
+                                <div class="paragraph fs-body-1 mt+">
+                                    <div class="p+ pt0">
+                                        <div flex-container="row">
+                                            <div flex-item="5" class="p+ pt0">
+                                                <lx-select
+                                                        name="jdcard"
+                                                        ng-model="balance.jdcard"
+                                                        lx-allow-clear="true"
+                                                        lx-choices="jdcardOpts"
+                                                        lx-fixed-label="true"
+                                                        lx-valid="BalanceForm.jdcard.$valid"
+                                                        lx-error="BalanceForm.jdcard.$invalid && BalanceForm.jdcard.$touched"
+                                                        ng-required="true"
+                                                        lx-label="{{ 'balance.form1.f1' | translate}} J&amp;D Card">
+                                                    <lx-select-selected>
+                                                        {{ $selected.payacctnum | tdcmask}} - {{ $selected.paycardname }}
+                                                    </lx-select-selected>
+
+                                                    <lx-select-choices>
+                                                        {{ $choice.payacctnum | tdcmask}} - {{ $choice.paycardname }} - {{ $choice.payavailable | currency:"USD$"  }}
+                                                    </lx-select-choices>
+                                                </lx-select>
+                                                <div ng-messages="BalanceForm.jdcard.$error"
+                                                     ng-if="BalanceForm.jdcard.$touched"
+                                                     style="color:maroon"
+                                                     role="alert">
+                                                    <div ng-message="required">{{ 'balance.form1.f1error.e1' | translate}} J&amp;D Card </div>
+                                                </div>
+                                            </div>
+
+                                            <div flex-item="2" class="p+ pt0">
+                                                <lx-date-picker
+                                                        id="{{dateFromPickerId}}"
+                                                        ng-model="balance.dateFrom"
+                                                        lx-input-format="{{balance.dateFromPicker.format}}"
+                                                        lx-callback="datePickerCallback(newDate, 'from')"
+                                                        lx-locale="{{balance.dateFromPicker.locale}}"
+                                                >
+                                                    <lx-text-field
+                                                            lx-valid="BalanceForm.dateFrom.$valid"
+                                                            lx-error="BalanceForm.dateFrom.$invalid && BalanceForm.dateFrom.$touched"
+                                                            lx-allow-clear="true"
+                                                            lx-label="{{ 'balance.form1.f2' | translate}}">
+                                                        <input type="text" name="dateFrom"
+                                                               ng-model="balance.dateFromPicker.dateFormated"
+                                                               ng-required="true" />
+                                                    </lx-text-field>
+                                                </lx-date-picker>
+                                                <div ng-messages="BalanceForm.dateFrom.$error"
+                                                     ng-if="BalanceForm.dateFrom.$touched"
+                                                     style="color:maroon"
+                                                     role="alert">
+                                                    <div ng-message="required">{{ 'balance.form1.f2error.e1' | translate}}</div>
+                                                </div>
+                                            </div>
+
+                                            <div flex-item="2" class="p+ pt0">
+                                                <lx-date-picker
+                                                        id="{{dateToPickerId}}"
+                                                        ng-model="balance.dateTo"
+                                                        lx-input-format="{{balance.dateToPicker.format}}"
+                                                        lx-callback="datePickerCallback(newDate, 'to')"
+                                                        lx-locale="{{balance.dateToPicker.locale}}"
+                                                >
+                                                    <lx-text-field
+                                                            lx-valid="BalanceForm.dateTo.$valid"
+                                                            lx-error="BalanceForm.dateTo.$invalid && BalanceForm.dateTo.$touched"
+                                                            lx-allow-clear="true"
+                                                            lx-label="{{ 'balance.form1.f3' | translate}}">
+                                                        <input type="text" name="dateTo"
+                                                               ng-model="balance.dateToPicker.dateFormated"
+                                                               ng-required="true" />
+                                                    </lx-text-field>
+                                                </lx-date-picker>
+                                                <div ng-messages="BalanceForm.dateTo.$error"
+                                                     ng-if="BalanceForm.dateTo.$touched"
+                                                     style="color:maroon"
+                                                     role="alert">
+                                                    <div ng-message="required">{{ 'balance.form1.f3error.e1' | translate}}</div>
+                                                </div>
+                                            </div>
+
+                                            <div flex-item="6" class="p+">
+                                                <div style="position: absolute;">
+                                                    <lx-progress lx-type="circular" lx-color="teal"
+                                                                 ng-if="LinearProgress">
+                                                    </lx-progress>
+                                                </div>
+                                                <lx-button lx-color="red"
+                                                           ng-click="reset()"
+                                                >{{ 'balance.form1.button1' | translate}}</lx-button>
+                                                <lx-button lx-color="green"
+                                                           ng-click="GetBalance($event, balance)"
+                                                           ng-disabled="sendbutton || BalanceForm.$invalid">
+                                                    {{ 'balance.form1.button2' | translate}} </lx-button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p+" flex-container="row" flex-column="16" flex-gutter="24" ng-show="mainLineChart.show">
+                            <div class="p+" flex-item="4">
+                                <strong class="fs-headline display-block">J&amp;D Cards {{ 'balance.card2.headline' | translate}}</strong>
+                                <div class="paragraph fs-body-1 mt+">
+                                    <p class="fs-body-2 " >{{ 'balance.card2.label1' | translate}}</p>
+                                    <p class="fs-headline tc-green-500 " >{{ jdCardBalance.payavailable | currency:"USD$" }}</p>
+                                </div>
+                                <div class="paragraph fs-body-1 mt+" ng-show="jdCardBalance.paylocked!=0">
+                                    <p class="fs-body-2 " >{{ 'balance.card2.label2' | translate}}</p>
+                                    <p class="fs-headline tc-red-500 " >{{ jdCardBalance.paylocked | currency:"USD$" }}</p>
+                                </div>
+                            </div>
+                            <div class="p+" flex-item="8" >
+                                <canvas id="line" class="chart chart-line"
+                                        chart-data="mainLineChart.data"
+                                        chart-labels="mainLineChart.labels"
+                                        chart-options="mainLineChart.options"
+                                        chart-series="mainLineChart.series">
+                                </canvas>
+                            </div>
+                        </div>
+
+                        <div flex-item="16" ng-show="listTransactions" class="listAnimation">
+                            <div class="card">
+                                <div class="toolbar bgc-blue-grey-50">
+                                    <lx-search-filter>
+                                        <input type="text" name="mysearch" ng-model="search.mysearch"
+                                               ng-model-options="{ debounce : 400 }" placeholder="{{ 'balance.datatable.placeholder' | translate}}">
+                                    </lx-search-filter>
+                                </div>
+                                <div class="data-table-container">
+                                    <header class="data-table-header">
+                                        <div class="data-table-header__label">
+                                            <span class="fs-title">{{ 'balance.datatable.title' | translate}}</span>
+                                        </div>
+                                    </header>
+
+                                    <table class="data-table">
+                                        <thead>
+                                        <tr class="">
+                                            <th></th>
+                                            <th >{{ 'balance.datatable.f1' | translate}}</th>
+                                            <!--<th >Status</th>-->
+                                            <th >{{ 'balance.datatable.f2' | translate}}</th>
+                                            <th >{{ 'balance.datatable.f3' | translate}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="transaction in listTransactions | filter:search.mysearch | orderBy:'id' " class=" ">
+                                            <td><lx-icon lx-id="{{transaction.trantype=='JDEBIT' ? 'arrow-down-bold' : 'arrow-up-bold'}}" lx-size="m" lx-color="{{transaction.trantype=='JDEBIT' ? 'red' : 'green'}}" lx-type="circled"></lx-icon></td>
+                                            <td >{{transaction.trantype}}</td>
+                                            <!--<td >{{transaction.transtatus}}</td>-->
+                                            <td >{{transaction.tranamount }}</td>
+                                            <td >{{transaction.trandate | dateFromDB : "YYYY-MM-DD"}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </lx-tab>
+    </lx-tabs>
+
+</div>
