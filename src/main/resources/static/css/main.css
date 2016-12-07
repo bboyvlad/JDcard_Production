@@ -1,13 +1,123 @@
 body {
     font-family: 'Poppins', sans-serif !important;
     font: 400 14px/1.42857 'Poppins',sans-serif !important;
-    min-width:400px !important;
+    min-width:480px !important;
 }
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
 }
+@supports (-webkit-appearance:none) {
+    .jdhome_login_btn {
+        margin-top: 10px;
+    }
+    .jdhome_knowmore {
+        left: 33px !important;
+    }
+    .jdhome_headtitle {
+        left: 33px !important;
+    }
+
+}
+@media only screen and (max-width: 1023px) {
+    .jdhome_card {
+        margin-left: -30%;
+        padding-left: 50%;
+    }
+    .jdhome_map {
+        margin-left: 26%;
+        max-width: 260px !important;
+    }
+    .jdhome_login_btn {
+        margin-left: 43%;
+    }
+    .jdhome_knowmore {
+        top: 0px;
+        left: 0px !important;
+        position: relative !important;
+        display: initial;
+    }
+    .jdhome_imgcheck{
+        position: relative;
+        left: 0px !important;
+        display: initial !important;
+    }
+    .jd_card_img img {
+        margin-left: 40%;
+        position: relative;
+        top: -70px !important;
+        width: 25%;
+    }
+    .jd_card_btn {
+        margin-left: 40% !important;
+    }
+    .jd_card_top{
+        margin-top: 13%;
+    }
+
+    .jd_card{
+        margin-left: 20%;
+        max-width: 450px ;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .jdhome_card {
+        margin-left: -35%;
+        padding-left: 50%;
+    }
+    .hide_menuItem{
+        display: none !important;
+    }
+    .jdhome_headsubtitle {
+        width: 90% !important; margin-left: none !important;
+    }
+    .jdhome_login_btn {
+        margin-left: 43%;
+    }
+    .jdhome_map {
+        margin-left: 26%;
+    }
+    .jd_card{
+        margin-left: 16%;
+    }
+    .jd_card_btn {
+        margin-left: 35%  !important;
+    }
+    .jd_card_subheadline{
+        margin-left: 13%;
+        width: 66%;
+    }
+}
+
+@media only screen and (max-width: 625px) {
+    .jdhome_card {
+        margin-left: -50%;
+        padding-left: 50%;
+    }
+
+    .jdhome_login_btn {
+        margin-left: 41%;
+    }
+    .jdhome_map {
+        margin-left: 22%;
+    }
+    .jd_card{
+        margin-left: 1%;
+    }
+    .jd_card_btn {
+        margin-left: 30% !important;
+    }
+    .jd_card_top {
+        margin-top: 24%;
+    }
+    .jd_card_subheadline{
+        margin-left: 1% !important;
+        width: 90% !important;
+    }
+}
 .subtlepattern {
-    background: rgba(0, 0, 0, 0.3) url("/css/img/backgrounds/gplaypattern.png") repeat scroll 0 0 !important
+    background: rgba(0, 0, 0, 0.3) url("/css/img/backgrounds/gplaypattern.png") repeat scroll 0 0 !important;
 }
 .tc-jdtext{
     color: #2c3c8e !important;
@@ -18,13 +128,36 @@ body {
     top: 16px !important;
     font-weight: bold;
 }
-/*.card__img--top p{
-    bottom: 16px;
-    font-weight: bold;
-    left: 16px;
-    position: absolute;
-    right: 16px;
-}*/
+
+.jd_card{
+    border-color: #d3d3d3 !important;
+    border-radius: 11.5px !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+.jd_card_subheadline{
+    bottom: -25px !important;
+    margin-left: 20%;
+    text-align: center !important;
+    width: 50%;
+}
+
+.jd_card_img img{
+    margin-left: 34%;
+    position: relative;
+    top: -60px !important;
+    width: 40%;
+}
+
+.jd_card_btn{
+    bottom: -17px;
+    margin-left: 23% !important;
+    overflow: hidden;
+    position: relative;
+}
+
 #sidebar_main .menu_section > ul > li > a > .menu_icon,
 #sidebar_main .menu_section > ul > li > a > .menu_icon img,
 #sidebar_main .menu_section > ul > li > ul > li > a > .menu_icon img{
@@ -51,6 +184,13 @@ body {
     color: #2c3c8e !important;
 }
 
+#sidebar_main .menu_section > ul > li ul a {
+    padding: 8px 10px 8px 55px !important;
+}
+
+.mdi-language{
+    background: url("/css/icons/idioma.png") repeat scroll 0 0 !important
+}
 .menu_section{
     height: 400px ! important; overflow: auto;
 }

@@ -185,7 +185,11 @@
                         <tr  ng-repeat="luser in listUser | filter:search.mysearch | limitTo : 5 | orderBy:'id'" class=" ">
                             <td width="30%">{{luser.name}}, {{luser.lastname}}</td>
                             <td width="30%">{{luser.email}}</td>
-                            <td width="10%">{{luser.enabled}}</td>
+                            <td width="10%">
+                                <lx-icon ng-show="luser.enabled" lx-id="check-circle" lx-size="m" lx-color="green" lx-type="circled"></lx-icon>
+                                <lx-icon ng-show="!luser.enabled" lx-id="close-circle" lx-size="m" lx-color="red" lx-type="circled"></lx-icon>
+                                <!--{{luser.enabled}}-->
+                            </td>
                             <td width="15%">
                                 <lx-icon ng-click="openDialogUser(luser)" lx-id="lead-pencil" lx-size="m" lx-color="blue" lx-type="circled"></lx-icon>
                             </td>

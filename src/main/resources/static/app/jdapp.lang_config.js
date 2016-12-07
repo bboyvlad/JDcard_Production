@@ -100,7 +100,8 @@ config(
             },
             dashboard:{
                 card1:{
-                    text:'Welcome {{name}} {{lastname}}, Your dashboard will allow you to:'
+                    title: 'Utilities',
+                    subtitle: 'take full advantage of the benefits of been part of our team'
                 },
                 card2:{
                     title:'Add payment method',
@@ -1222,8 +1223,8 @@ config(
             },
             dashboard:{
                 card1:{
-                    //text:'Bienvenido {{name}} {{lastname}}, a su tablero principal:'
-                    text:'Bienvenido {{name}}, a su tablero principal:'
+                    title: 'Utilidades',
+                    subtitle: 'aproveche al máximo los beneficios de formar parte de nosotros'
                 },
                 card2:{
                     title:'Agregar método de pago',

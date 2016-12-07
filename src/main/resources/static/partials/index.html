@@ -1,35 +1,12 @@
 <style>
-    @supports (-webkit-appearance:none) {
-        .jdhome_login_btn {
-            margin-top: 10px;
-        }
-        .jdhome_knowmore {
-            left: 33px !important;
-        }
-    }
-    @media only screen and (max-width: 1023px) {
-        .jdhome_login_btn {
-            margin-left: 25%;
-        }
-        .jdhome_knowmore {
-            top: 0px;
-            left: 0px !important;
-            position: relative !important;
-            display: initial;
-        }
-        .jdhome_imgcheck{
-            position: relative;
-            left: 0px !important;
-            display: initial !important;
-        }
-    }
+
 </style>
 <div class="" ng-init="updateMenu()">
 
     <div class="" flex-container="row" flex-column="16" flex-gutter="24">
-        <div flex-item="3"></div>
-        <div flex-item="10">
-            <div class="card " >
+        <div flex-item="4"></div>
+        <div flex-item="8" class="jdhome_card">
+            <div class="card " style="max-width: 520px ! important;">
                 <div class="card__img card__img--top" style="min-height: 95px;">
                     <img ng-src="../css/img/design/index/bienvenidoBACK.png"  style="min-height: 95px;">
                     <span class="fs-headline tc-white-1 display-block" style="text-align: center !important;">
@@ -37,10 +14,10 @@
                         <div flex-item="" flex-container="row">
                                 <div flex-item="8">
                                 </div>
-                                <div flex-item="3" style="" flex-container="row">
+                                <div flex-item="4" style="" flex-container="row">
                                     <div>
                                     <img class="jdhome_imgcheck" ng-src="../css/img/design/index/checkmark1.png" />
-                                    <p class="fs-body-2 jdhome_knowmore" style="top: 1px; left: 0px !important;">
+                                    <p class="fs-body-2 jdhome_knowmore" style="top: 1px; left: 1px !important;">
                     {{'index.card1.subtitle' | translate}}
                                     </p>
 
@@ -53,13 +30,21 @@
                 </div>
                 <div class=" tc-jdtext ">
                     <div class="" flex-container="row" flex-column="16" flex-gutter="24">
-                        <div flex-item="3"> </div>
-                        <div flex-item="10" flex-container="column">
-                            <img ng-src="../css/img/design/index/mapa.png" />
+                        <!--<div flex-item="3"> </div>-->
+                        <div flex-item="16" flex-container="column">
+                            <div flex-container="row">
+                                <div flex-item="3" >
+                                </div>
+                                <div flex-item="6" >
+                                    <img class="jdhome_map" ng-src="../css/img/design/index/mapa.png" style="max-width: 260px ! important;"/>
+                                </div>
+
+                            </div>
+
                             <div flex-item="" flex-container="row">
 
                                 <div flex-item="" class="jdhome">
-                                    <p class="fs-headline" style="top: 1px; margin-left: 20px; text-align: center; font-weight: bold !important;"> {{'index.card1.txt1' | translate}} <strong> J&amp;D Card </strong> <br/> {{'index.card1.txt2' | translate}}<!--<img ng-src="../css/img/design/titulo1.png" />-->
+                                    <p class="fs-title" style="top: 1px; margin-left: 20px; text-align: center; font-weight: bold !important;"> {{'index.card1.txt1' | translate}} <strong> J&amp;D Card </strong> <br/> {{'index.card1.txt2' | translate}}<!--<img ng-src="../css/img/design/titulo1.png" />-->
                                     </p>
                                 </div>
                             </div>
@@ -68,7 +53,7 @@
                                 </div>
                                 <div flex-item="4" >
                                     <a href="" ng-href="/loginpage">
-                                        <button class="jdhome_login_btn btn btn--m btn--raised bgc-jd tc-white-1" lx-ripple="indigo-500" style="position: relative; overflow: hidden;"> {{'index.card1.button' | translate}}
+                                        <button class=" btn btn--m btn--raised bgc-jd tc-white-1" lx-ripple="indigo-500" style="position: relative; overflow: hidden;"> {{'index.card1.button' | translate}}
                                         </button>
                                     </a>
                                 </div>

@@ -9,7 +9,7 @@
         <lx-dropdown style="position: relative; top: 5px;" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="Language" lx-tooltip-position="bottom" >
-                    <i class="mdi mdi-translate"></i>
+                    <img src="/css/icons/idioma.png" style="position: relative; left: 20%;">
                 </lx-button>
             </lx-dropdown-toggle>
             <lx-dropdown-menu>
@@ -34,7 +34,7 @@
             </lx-button>
         </a>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.cardvalidate[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-credit-card-scan"></i>
@@ -49,7 +49,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.payments[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-bank"></i>
@@ -68,7 +68,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'"  lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.servrequest[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-airplane-takeoff"></i>
@@ -83,7 +83,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN' || user.authorities[0].authority=='ROLE_PROVIDER'"  lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.balance[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-chart-areaspline"></i>
@@ -98,7 +98,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.jdcard[0].tooltip | translate}} J&amp;D Card" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-credit-card-multiple"></i>
@@ -114,7 +114,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.giftcard[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-wallet-giftcard"></i>
@@ -130,7 +130,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.defgen[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-settings-box"></i>
@@ -146,7 +146,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.aircraft[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-airplane"></i>
@@ -162,7 +162,7 @@
             </lx-dropdown-menu>
         </lx-dropdown>
 
-        <lx-dropdown style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.captain[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-account-star"></i>
@@ -177,7 +177,7 @@
                 </ul>
             </lx-dropdown-menu>
         </lx-dropdown>
-        <lx-dropdown style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
+        <lx-dropdown class="hide_menuItem" style="position: relative; top: 5px;" ng-if="user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" lx-position="right" lx-over-toggle="true" lx-width="250">
             <lx-dropdown-toggle>
                 <lx-button lx-color="white" lx-type="icon" lx-ripple="true" lx-tooltip="{{sharedMenu.useradmin[0].tooltip | translate}}" lx-tooltip-position="bottom" >
                     <i class="mdi mdi-account-settings-variant"></i>
