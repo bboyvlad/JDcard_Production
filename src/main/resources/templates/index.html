@@ -9,6 +9,7 @@
     <meta name="msapplication-tap-highlight" content="no"/>
     <!-- load custom font -->
     <!--<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" />-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <!-- custom font css -->
     <!-- load MUI -->
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css" media="all" />
@@ -66,7 +67,7 @@
 
         <div class="sidebar_main_header">
             <div class="sidebar_logo">
-                <a href="/" class="sSidebar_hide"><img th:src="@{/theme/assets/img/logo_main.png}" src="../static/theme/assets/img/logo_main.png" alt="" style="height: 75px;"/></a>
+                <a href="/" class="sSidebar_hide" ><img th:src="@{/css/img/design/index/logoJD.png}" src="../static/css/img/design/index/logoJD.png" alt="" style="height: 75px;"/></a>
                 {{sharedMenu.mainmenu.main.text}}
             </div>
             <!--<div class="sidebar_actions">
@@ -75,16 +76,178 @@
                 </select>
             </div>-->
         </div>
-
         <div class="menu_section">
             <ul>
-                <li class="" ng-show="sharedMenu.mainmenu.main" ng-repeat="main in sharedMenu.mainmenu.main">
+                <li ng-class="{'active': main.link == states.activeItem}" ng-click="states.activeItem=main.link" class="" ng-show="sharedMenu.mainmenu.main" ng-repeat="main in sharedMenu.mainmenu.main">
                     <a href="{{main.link}}">
-                        <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
-                        <span class="menu_title">{{main.text}}</span>
+                        <span class="menu_icon"><img ng-show="main.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" /></span>
+                        <span class="menu_title">{{main.text | translate}}</span>
                     </a>
                 </li>
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-credit-card-scan"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.cardvalidate[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.cardvalidate"  class="ng-scope" >
+                        <li ng-class="{'active': cardvalidatemenu.link == states.activeItem}" ng-click="states.activeItem=cardvalidatemenu.link" ng-repeat="cardvalidatemenu in sharedMenu.cardvalidate" class="ng-scope">
 
+                            <a class="ng-binding ng-scope" ng-href="{{cardvalidatemenu.link}}">
+                                <span class="menu_icon">
+                                    <img ng-show="cardvalidatemenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>
+                                {{cardvalidatemenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-bank"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.payments[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.payments"  class="ng-scope" >
+                        <li ng-class="{'active': paymenu.link == states.activeItem}" ng-click="states.activeItem=paymenu.link" ng-repeat="paymenu in sharedMenu.payments" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{paymenu.link}}">{{paymenu.text | translate}}</a>
+                        </li>
+                        <li ng-repeat="bankmenu in sharedMenu.bankmanage" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{bankmenu.link}}">{{bankmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-airplane-takeoff"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.servrequest[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.servrequest"  class="ng-scope" >
+                        <li ng-class="{'active': servrequestmenu.link == states.activeItem}" ng-click="states.activeItem=servrequestmenu.link" ng-repeat="servrequestmenu in sharedMenu.servrequest" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{servrequestmenu.link}}"><span class="menu_icon">
+                                    <img ng-show="servrequestmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{servrequestmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-chart-areaspline"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.balance[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.balance"  class="ng-scope" >
+                        <li ng-class="{'active': balancemenu.link == states.activeItem}" ng-click="states.activeItem=balancemenu.link" ng-repeat="balancemenu in sharedMenu.balance" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{balancemenu.link}}"><span class="menu_icon">
+                                    <img ng-show="balancemenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{balancemenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-credit-card-multiple"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.jdcard[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.jdcard"  class="ng-scope" >
+                        <li ng-class="{'active': jdsubmenu.link == states.activeItem}" ng-click="states.activeItem=jdsubmenu.link" ng-repeat="jdsubmenu in sharedMenu.jdcard" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{jdsubmenu.link}}">
+                                <span class="menu_icon">
+                                    <img ng-show="jdsubmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{jdsubmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-wallet-giftcard"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.giftcard[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.giftcard"  class="ng-scope" >
+                        <li ng-class="{'active': giftsubmenu.link == states.activeItem}" ng-click="states.activeItem=giftsubmenu.link" ng-repeat="giftsubmenu in sharedMenu.giftcard" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{giftsubmenu.link}}"><span class="menu_icon">
+                                    <img ng-show="giftsubmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{giftsubmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-settings-box"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.defgen[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.defgen"  class="ng-scope" >
+                        <li ng-class="{'active': defmenu.link == states.activeItem}" ng-click="states.activeItem=defmenu.link" ng-repeat="defmenu in sharedMenu.defgen" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{defmenu.link}}"><span class="menu_icon">
+                                    <img ng-show="defmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{defmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-airplane"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.aircraft[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.aircraft"  class="ng-scope" >
+                        <li ng-class="{'active': aircraftmenu.link == states.activeItem}" ng-click="states.activeItem=aircraftmenu.link" ng-repeat="aircraftmenu in sharedMenu.aircraft" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{aircraftmenu.link}}"><span class="menu_icon">
+                                    <img ng-show="aircraftmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{aircraftmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-account-star"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.captain[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.captain"  class="ng-scope" >
+                        <li ng-class="{'active': captainmenu.link == states.activeItem}" ng-click="states.activeItem=captainmenu.link" ng-repeat="captainmenu in sharedMenu.captain" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{captainmenu.link}}"><span class="menu_icon">
+                                    <img ng-show="captainmenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{captainmenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show=" user.authorities[0].authority=='ROLE_ADMIN' || user.authorities[0].authority=='ROLE_SYSADMIN'" class="ng-scope submenu_trigger act_section" style="">
+                    <a  class="ng-scope" ng-click="submenuToggle($event)">
+                    <span class="menu_icon">
+                        <i class="mdi mdi-account-settings-variant"></i>
+                    </span>
+                        <span class="menu_title ng-binding">{{sharedMenu.useradmin[0].tooltip | translate}}</span>
+                    </a>
+                    <ul ng-show="sharedMenu.useradmin"  class="ng-scope" >
+                        <li ng-class="{'active': umenu.link == states.activeItem}" ng-click="states.activeItem=umenu.link" ng-repeat="umenu in sharedMenu.useradmin" class="ng-scope">
+                            <a class="ng-binding ng-scope" ng-href="{{umenu.link}}"><span class="menu_icon">
+                                    <img ng-show="umenu.link === states.activeItem" ng-src="/css/img/design/index/checkmark1.png" alt="" width="50%" />
+                                </span>{{umenu.text | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
                 <!--<lx-dropdown ng-show="sharedMenu.mainmenu.products" ng-repeat="product in sharedMenu.mainmenu.products">
                     <lx-dropdown-toggle>
                         <lx-button>{{product.text}}</lx-button>
@@ -141,7 +304,7 @@
                 </li>-->
                 <li class="list-row list-row--has-separator" ng-repeat="item in cart | orderBy:'id'">
                     <div class="list-row__primary">
-                        <lx-icon lx-id="airplane" lx-size="s" lx-color="grey" lx-type="flat" ng-click="shopCartDialog(item)"></lx-icon>
+                        <lx-icon lx-id="airplane" lx-size="s" lx-color="grey" lx-type="flat" ></lx-icon>
                     </div>
                     <div class="list-row__content">
                         <span ng-click="shopCartDialog(item)">{{item.name}}</span>
@@ -193,7 +356,7 @@
     <footer>
         <div class="tc-white-1 p+" flex-container="row" flex-column="16" flex-gutter="24">
             <div flex-item="16">
-                Inc. <a href="htts://www.jdoilfield.com">JD Oilfield s.a.</a>
+                Inc. <a href="htts://www.jdoilfield.com">J&amp;D Oilfield International</a>
             </div>
         </div>
     </footer>
