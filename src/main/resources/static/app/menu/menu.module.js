@@ -118,6 +118,13 @@ menu.factory('myJdMenu', function($filter, $translate) {
                 "text":'menu.servrequest.opt2'
             }
         ],
+        "cart":[
+            {
+                "link":"/dashboard/cart",
+                "text":'menu.cart.opt1',
+                tooltip:'menu.cart.tooltip'
+            }
+        ],
         "mainmenu":{
             "main":[
                 {
@@ -183,6 +190,9 @@ menu.factory('myJdMenu', function($filter, $translate) {
     };
     myJdMenu.servrequestSection = function(menuOpt){
         myJdMenu.servrequest = menuOpt;
+    };
+    myJdMenu.cartSection = function(menuOpt){
+        myJdMenu.cart = menuOpt;
     };
 
     return myJdMenu;
@@ -538,5 +548,6 @@ menu.controller('MyJdMenuController', [ '$scope', '$rootScope', '$filter', 'myJd
         myJdMenu.cardvalidateSection(myJdMenu.cardvalidate);
         myJdMenu.balanceSection(myJdMenu.balance);
         myJdMenu.servrequestSection(myJdMenu.servrequest);
+        myJdMenu.cartSection(myJdMenu.cart);
     };
 }]);

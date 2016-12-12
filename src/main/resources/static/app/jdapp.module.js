@@ -10,15 +10,12 @@ var jdApp = angular.module('jdApp', [
     'ngResource',
     'jdmenu',
     'singup',
-    'sms',
-    'accountStatus',
     'login',
     'ManageUser',
     'dashboard',
     'PayMethod',
     'AddJdCard',
     'reFillJdCard',
-    'AddGrpServ',
     'AddProduct',
     'AddCart',
     'AddGiftJdCard',
@@ -611,7 +608,8 @@ jdApp.factory('serviceRequestResource',  function ($resource) {
         },
         showServicesRequestsClose: {
             method:'GET',
-            url: '/servicerequest/manage/close'
+            url: '/servicerequest/manage/closed',
+            isArray: true
         },
         userServicesRequestsPending: {
             method:'GET',

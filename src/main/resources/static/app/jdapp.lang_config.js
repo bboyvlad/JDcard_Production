@@ -869,8 +869,15 @@ config(
                 }
             },
             adminPending:{
+                tabs:{
+                    tab1: 'Open service requests',
+                    tab2: 'Closed service requests'
+                },
                 card1:{
                     headline:'Service requests Administration',
+                },
+                card2:{
+                    headline:'Closed service requests',
                 },
                 dialog:{
                     headline:'Service request ',
@@ -889,7 +896,7 @@ config(
 
                 datatable1:{
                     placeholder: 'Search',
-                    title: 'Pending payments',
+                    title: 'Open service requests',
                     f1: 'Client',
                     f2: 'Location',
                     f3: 'Creation date',
@@ -898,6 +905,15 @@ config(
                     f6: 'Cleared',
                     f7: 'Prepare',
                     f8: 'Reverse'
+                },
+                datatable2:{
+                    placeholder: 'Search',
+                    title: 'Closed service requests',
+                    f1: 'Client',
+                    f2: 'Location',
+                    f3: 'Creation date',
+                    f4: 'Landing date',
+                    f5: 'Serial',
                 },
                 form1:{
                     f1:'Ticket',
@@ -1069,7 +1085,7 @@ config(
                 payments: {
                     opt1: 'Add Payment Method',
                     opt2: 'Notify Deposit / Transfer',
-                    tooltip: 'Manage Payments'
+                    tooltip: 'Wallet'
                 },
                 bankmanage: {
                     opt1: 'Bank Account Manage',
@@ -1078,7 +1094,7 @@ config(
                 },
                 defgen: {
                     opt1: 'Products',
-                    tooltip: 'General Definitions'
+                    tooltip: 'Settings'
                 },
                 aircraft: {
                     opt1: 'Aircrafts',
@@ -1099,7 +1115,11 @@ config(
                 servrequest: {
                     opt1: 'Pending Service Requests',
                     opt2: 'Admin Pending Requests',
-                    tooltip: 'Service Request'
+                    tooltip: 'Orders'
+                },
+                cart:{
+                    opt1: 'Shopcart',
+                    tooltip: 'Shopcart'
                 },
                 mainmenu: {
                     opt1: 'Home',
@@ -1991,8 +2011,15 @@ config(
                 }
             },
             adminPending:{
+                tabs:{
+                    tab1: 'Ordenes Abiertas',
+                    tab2: 'Ordenes cerradas'
+                },
                 card1:{
                     headline:'Adminstración de peticiones de servicios',
+                },
+                card2:{
+                    headline:'Ordenes cerradas',
                 },
                 dialog:{
                     headline:'Peticiones de servicios',
@@ -2020,6 +2047,15 @@ config(
                     f6: 'Validar',
                     f7: 'Preparar',
                     f8: 'Reversar'
+                },
+                datatable2:{
+                    placeholder: 'Buscar',
+                    title: 'Ordenes cerradas',
+                    f1: 'Cliente',
+                    f2: 'Localidad',
+                    f3: 'Fecha de creación',
+                    f4: 'Fecha de aterrizaje',
+                    f5: 'Serial',
                 },
                 form1:{
                     f1:'Ticket',
@@ -2186,7 +2222,7 @@ config(
                 payments: {
                     opt1: 'Agregar método de pago',
                     opt2: 'Notificar depósito / Transferencia',
-                    tooltip: 'Gestionar pagos'
+                    tooltip: 'Cartera'
                 },
                 bankmanage: {
                     opt1: 'Gestionar cuenta bancaria',
@@ -2195,7 +2231,7 @@ config(
                 },
                 defgen: {
                     opt1: 'Productos',
-                    tooltip: 'Definiciones Generales'
+                    tooltip: 'Configuración'
                 },
                 aircraft: {
                     opt1: 'Mis aeronaves',
@@ -2216,7 +2252,11 @@ config(
                 servrequest: {
                     opt1: 'Peticiones de servicio pendientes',
                     opt2: 'Administrar peticiones de servicio',
-                    tooltip: 'Peticiones de servicio'
+                    tooltip: 'Ordenes'
+                },
+                cart:{
+                    opt1: 'Carro de compra',
+                    tooltip: 'Carro de compra'
                 },
                 mainmenu: {
                     opt1: 'Home',
@@ -2250,7 +2290,7 @@ config(
             }
         });
         $translateProvider.preferredLanguage('en');
-        //$translateProvider.useCookieStorage();
+        $translateProvider.useCookieStorage();
         //$translateProvider.useLocalStorage();
         $translateProvider.useSanitizeValueStrategy('escape');
     }

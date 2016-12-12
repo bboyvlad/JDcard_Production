@@ -7,6 +7,7 @@
 
 /**
  * @description
+ *
  * This object provides a utility for producing rich Error messages within
  * Angular. It can be called as follows:
  *
@@ -2290,7 +2291,7 @@ function setupModuleLoader(window) {
            *    configuration.
            * @description
            * Use this method to register work which needs to be performed on module loading.
-           * For more about how to configure service, see
+           * For more about how to configure services, see
            * {@link providers#provider-recipe Provider Recipe}.
            */
           config: config,
@@ -4833,7 +4834,7 @@ function $AnchorScrollProvider() {
            .controller('ScrollController', ['$scope', '$location', '$anchorScroll',
              function ($scope, $location, $anchorScroll) {
                $scope.gotoBottom = function() {
-                 id
+                 // set the location.hash to the id of
                  // the element you wish to scroll to.
                  $location.hash('bottom');
 
@@ -16873,8 +16874,8 @@ function $RootScopeProvider() {
      *
      * @param {Object.<string, function()>=} providers Map of service factory which need to be
      *                                       provided for the current scope. Defaults to {@link ng}.
-     * @param {Object.<string, *>=} instanceCache Provides pre-instantiated service which should
-     *                              append/override service provided by `providers`. This is handy
+     * @param {Object.<string, *>=} instanceCache Provides pre-instantiated services which should
+     *                              append/override services provided by `providers`. This is handy
      *                              when unit-testing and having the need to override a default
      *                              service.
      * @returns {Object} Newly created scope.
@@ -31105,7 +31106,7 @@ var SelectController =
  *   <file name="protractor.js" type="protractor">
  *     it('should initialize to model', function() {
  *       var select = element(by.css('select'));
- *       expect(element(by.model('model.id')).$(checked).getText()).toEqual('Two');
+ *       expect(element(by.model('model.id')).$('option:checked').getText()).toEqual('Two');
  *     });
  *   </file>
  * </example>

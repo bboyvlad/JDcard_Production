@@ -148,7 +148,7 @@ public class PrincipalController {
                 u.setExpired(false);
                 u.setLocked(false);
 
-                Role userRole = roleRepository.findByCode("ROLE_USER");
+                Role userRole = roleRepository.findByCode("ROLE_GUEST");
                 u.setRoles(Arrays.asList(userRole));
 
                 Principal usr = principalRepository.save(u);
@@ -177,7 +177,6 @@ public class PrincipalController {
 
                 mailSender.send(email);
                 System.out.println("Register mail send");
-
                 return principalRepository.findOne(usr.getId());
 
             }else{
@@ -229,6 +228,7 @@ public class PrincipalController {
     /*
     * PAYMETHOD
     */
+
     //buy a jdcard with stripe's payment method
     @RequestMapping(value = "/jdcard",  method = RequestMethod.POST) //cardController JD CardModel
     public @ResponseBody Object addJdcardStripe(@RequestBody RegisterPayTransactionDTO regpay,
@@ -490,6 +490,11 @@ public class PrincipalController {
 
             Pp.getPayments().add(pay);
 
+            Role userRole = roleRepository.findByCode("ROLE_USER");
+
+            Pp.getRoles().removeAll(Pp.getRoles());
+            Pp.getRoles().addAll(Arrays.asList(userRole));
+
             principalRepository.save(Pp);
 
             SimpleMailMessage email=new SimpleMailMessage();
@@ -730,7 +735,6 @@ public class PrincipalController {
             p.getRoles().addAll(Arrays.asList(userRole));
 
             return principalRepository.save(p);
-
     }
 
     /*
@@ -815,7 +819,7 @@ public class PrincipalController {
 
 
             JRBeanCollectionDataSource beanCollectionDataSource=new JRBeanCollectionDataSource(coordinates);
-            JasperPrint jasperPrint=JasperFillManager.fillReport(System.getProperty("user.home")+"/fussyfiles/reports/jdcoordinates.jasper", params,beanCollectionDataSource);
+            JasperPrint jasperPrint=JasperFillManager.fillReport(java.lang.System.getProperty("user.home")+"/fussyfiles/reports/jdcoordinates.jasper", params,beanCollectionDataSource);
 
             //JasperExportManager.exportReportToPdfFile(jasperPrint, "jdcoordinate.pdf");
 
@@ -1045,7 +1049,10 @@ public class PrincipalController {
             Shopcart cart=new Shopcart();
 
             cart.setCaptain(flight.getCaptain());
-            cart.setRdate(flight.getReturndate());
+
+            cart.setIncomingloc(flight.getIncomingloc()); //localidad de donde viene
+
+            cart.setRdate(flight.getReturndate()); //Fecha de regreso
 
             cart.setName(flight.getDescription());
             cart.setLocation(flight.getLocation());

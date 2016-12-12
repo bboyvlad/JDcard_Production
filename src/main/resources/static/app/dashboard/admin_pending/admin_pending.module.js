@@ -5,26 +5,35 @@
 
 var admindeferedpay = angular.module('AdminDeferedPay', ['ngRoute', 'ngMessages', 'angularPayments', 'ui.utils.masks']);
 
-admindeferedpay.controller('AdminDeferedPayController', ['$rootScope','$scope', '$filter', '$http', '$location', 'LxDatePickerService', 'myJdMenu', 'helperFunc', 'LxNotificationService', 'LxDialogService', 'serviceRequestResource', 'userResource', 'userPaymentResource','$translate',
-    function DeferedPayController($rootScope, $scope, $filter, $http, $location, LxDatePickerService, myJdMenu, helperFunc, LxNotificationService, LxDialogService, serviceRequestResource, userResource, userPaymentResource, $translate) {
+admindeferedpay.controller('AdminDeferedPayController', ['$rootScope','$scope', '$filter', '$http', '$location', 'LxDatePickerService', 'myJdMenu', 'helperFunc', 'LxNotificationService', 'LxDialogService', 'serviceRequestResource', '$translate',
+    function DeferedPayController($rootScope, $scope, $filter, $http, $location, LxDatePickerService, myJdMenu, helperFunc, LxNotificationService, LxDialogService, serviceRequestResource, $translate) {
         $scope.cssClass = 'transitionView';
         var self = this;
         $scope.icon = '../css/icons/plane-flying.png';
         $scope.sendbutton = false;
         $scope.LinearProgress = false;
-        $scope.search = { mysearch:'' };
+        $scope.search = { mysearch:'', mysearchClosed:'' };
         $scope.pending = {};
 
         $scope.getDeferedList = function getDeferedList() {
             var deferedList = serviceRequestResource.showServicesRequestsPending();
             deferedList.$promise.then(
                 function (data) {
-                    $scope.items = $filter('orderBy')(data, "servicerequest");
-                    $scope.listPaymentsDefered = $scope.items;
+                    $scope.listPaymentsDefered = $filter('orderBy')(data, "servicerequest");
                 }
             );
-        }
+        };
         $scope.getDeferedList();
+
+        $scope.getClosedList = function getClosedList() {
+            var closedList = serviceRequestResource.showServicesRequestsClose();
+            closedList.$promise.then(
+                function (data) {
+                    $scope.listPaymentsClosed = $filter('orderBy')(data, "servicerequest");
+                }
+            );
+        };
+        $scope.getClosedList();
 
 
         $scope.checkService = [];
@@ -85,6 +94,7 @@ admindeferedpay.controller('AdminDeferedPayController', ['$rootScope','$scope', 
                                 $scope.sms7 = $filter('translate')('adminPending.module.sms7');
                                 LxNotificationService.success($scope.sms7);
                                 $scope.getDeferedList();
+                                $scope.getClosedList();
                                 //$scope.faircrafts = [];
                                 //$location.path("/dashboard");
                                 self.LinearProgress = helperFunc.toogleStatus(self.LinearProgress);
@@ -136,6 +146,7 @@ admindeferedpay.controller('AdminDeferedPayController', ['$rootScope','$scope', 
                                 $scope.sms3 = $filter('translate')('adminPending.module.sms3');
                                 LxNotificationService.success($scope.sms3);
                                 $scope.getDeferedList();
+                                $scope.getClosedList();
                                 //$scope.faircrafts = [];
                                 //$location.path("/dashboard");
                                 self.LinearProgress = helperFunc.toogleStatus(self.LinearProgress);
@@ -303,6 +314,7 @@ admindeferedpay.controller('AdminDeferedPayController', ['$rootScope','$scope', 
                                 $scope.sms3 = $filter('translate')('defered.module.sms3');
                                 LxNotificationService.success($scope.sms3);
                                 $scope.getDeferedList();
+                                $scope.getClosedList();
                                 //$scope.faircrafts = [];
                                 //$location.path("/dashboard");
                                 self.LinearProgress = helperFunc.toogleStatus(self.LinearProgress);

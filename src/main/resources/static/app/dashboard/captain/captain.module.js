@@ -30,7 +30,7 @@ mycaptain.controller('MyCaptainController', ['$rootScope','$scope', '$http', '$l
         /****************** DATEPICKER *********************/
         $scope.datePickerId = 'dateofbirth';
 
-        $scope.datePickerCallback = function datePickerCallback(_newdate, action="add")
+        $scope.datePickerCallback = function datePickerCallback(_newdate, action)
         {
             if(action=="add"){
                 $scope.fmycaptain.datePicker.dateFormated = moment(_newdate).locale($scope.fmycaptain.datePicker.locale).format($scope.fmycaptain.datePicker.format);
